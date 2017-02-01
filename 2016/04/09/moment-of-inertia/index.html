@@ -251,7 +251,7 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/mathematica_out.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/blog/img/mathematica_out.png)">
     
             <p class="article-headline-p">
                 转动惯量那点事
@@ -369,39 +369,39 @@
 <p>也就是说，过刚体质心存在相互垂直的最大转动惯量轴和最小转动惯量轴！对我们这些小白来说，这是这段话中最新最深的一层含义了。</p>
 <p>为什么？</p>
 <a id="more"></a>
-<div style="text-align:center"><br><img src="/img/phy_00.jpg" alt="问题，手抖见谅"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/phy_00.jpg" alt="问题，手抖见谅"><br></div>
 
 <h2 id="然后……"><a href="#然后……" class="headerlink" title="然后……"></a>然后……</h2><p>本来没觉得是个大case。就随口问了一下在科大读物理的原。然后他发给了我一堆不明觉厉的东西……</p>
-<div style="text-align:center"><br><img src="/img/phy_01.jpg" alt="不明觉厉之一"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/phy_01.jpg" alt="不明觉厉之一"><br></div>
 
-<div style="text-align:center"><br><img src="/img/phy_02.jpg" alt="不明觉厉之二"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/phy_02.jpg" alt="不明觉厉之二"><br></div>
 
-<div style="text-align:center"><br><img src="/img/phy_03.jpg" alt="不明觉厉之三"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/phy_03.jpg" alt="不明觉厉之三"><br></div>
 
 <p>浙大学渣已被虐哭……我终于见识了科大理科生的可怕！！！</p>
 <p>原以为分析落远了，代数知识范围还是可以完爆他的。后来发现自己实在naive，科大的线性代数第一章……呃……可怕。真是不敢想讲个线性空间就要在前面铺垫海森阵这种我连听都没听说过的东西……</p>
 <p>弃理从工逃逃逃……</p>
 <p>不过原的推导最后进了死胡同。看来费恩曼老人家说的“它太复杂，难于在这里证明”不是说着玩的。原写的都是求和形式，不过最后他想知道的那个求和……即便在我很low的数学看来，也不觉那是个级数，应该是个黎曼和。</p>
 <p>那么为什么不用积分的语言呢？</p>
-<div style="text-align:center"><br><img src="/img/phy_04.jpg" alt="积分形式"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/phy_04.jpg" alt="积分形式"><br></div>
 
 <p>翻译成数学就是这样了。</p>
 <p>然后……我想到了Mathematica。</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Clear</span>[<span class="string">"Global`*"</span>]</span><br><span class="line"><span class="keyword">FullSimplify</span>[</span><br><span class="line"> <span class="keyword">Dot</span>[<span class="list">&#123;a, b, c&#125;</span> /. <span class="keyword">Maximize</span>[S, <span class="list">&#123;a, b, c&#125;</span>][[<span class="number">2</span>]],</span><br><span class="line">   <span class="list">&#123;a, b, c&#125;</span> /. <span class="keyword">Minimize</span>[S, <span class="list">&#123;a, b, c&#125;</span>][[<span class="number">2</span>]]]</span><br><span class="line">  /. <span class="list">&#123;S -&gt; Integrate[Norm[α - Dot[α, n]/Dot[n, n] n]^2 ρ[x, y, z], x, y, z] /. &#123;α -&gt; &#123;x, y, z&#125;</span>, n -&gt; <span class="list">&#123;a, b, c&#125;</span>&#125;&#125;</span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
 <p>我以为应该是对的了吧。Shift + Enter之后，Out豁然为0！我欣喜若狂，以为万能的Mathematica完成了一系列推导，最终约得答案为0！我还Trace了一下，并深信不疑，仔细分析Trace就能得到推导过程。</p>
-<div style="text-align:center"><br><img src="/img/mathematica.png" alt="多像啊"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/mathematica.png" alt="多像啊"><br></div>
 
 <p>原最开始也深信不疑。不过看出来科大学生不虚那扎实学风了。他自己亲身实践了一下，发现了问题。我看了他发的代码和输出截图一下子感觉大事不妙。交流之后我真是又有想跪的心了——我刚把Mathematica推荐给他，这哥们以前就用过WolframAlpha，才一天他就能挑bug了。啊啊啊，两年的Mathematica白玩了（←_←本来你也没好好学过Mathematica）。</p>
 <p>替换乱掉了，替换乱掉了，替换乱掉了！</p>
 <p>可以推（xi）倒（xi）重（shui）来（le）。</p>
 <p>我也不知道自己是真抽不出时间还是在搪塞我的好哥们，等我晚上看看，等我晚上用电脑看看……然而晚上在查中山舰事件的资料……</p>
 <p>今天感觉浑浑噩噩了一天，哎呀，写完就睡。下午愣是在寝室鼓捣出来另一个打法：</p>
-<div style="text-align:center"><br><img src="/img/text_cell.png" alt="乱入的文本单元"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/text_cell.png" alt="乱入的文本单元"><br></div>
 
-<div style="text-align:center"><br><img src="/img/code.png" alt="Hexo贴代码真是……总是解析不了"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/code.png" alt="Hexo贴代码真是……总是解析不了"><br></div>
 
 <p>嗯，也就是说我要生成随机刚体（其实就是一群质点），通过具体问题具体分析，验证一下。</p>
-<div style="text-align:center"><br><img src="/img/mathematica_out.png" alt="结果"><br></div>
+<div style="text-align:center"><br><img src="/blog/img/mathematica_out.png" alt="结果"><br></div>
 
 <p>是不是很酷？感觉很高端的样子（实际上没什么大用）。图中的散点即为随即生成的质点，紫色半透明区域是密度分布啦。实粗线是转动惯量最大轴矢量，虚粗线是转动惯量最小轴矢量。下面计算结果可以看出，在有计算误差的情况下，它们的内积已经很接近0，成角为90°。</p>
 <p>我发给原代码，原还没回我。</p>

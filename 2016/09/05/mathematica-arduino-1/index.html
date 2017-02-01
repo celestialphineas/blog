@@ -251,7 +251,7 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/mma1.svg)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/blog/img/mma1.svg)">
     
             <p class="article-headline-p">
                 用Arduino与Mathematica编写世界
@@ -393,7 +393,7 @@
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DeviceWrite[arduinoObject, &lt;|pinNumber -&gt; <span class="number">1</span>|&gt;]</span><br></pre></td></tr></table></figure>
 <p>这样就可以控制pinNumber的数字状态。pinNumber可以是2到13的整数，也可以是代表模拟针脚的字符串，即“A0”到“A5”，注意首字母必须大写。</p>
 <p>按照下面的Fritzing图接好LED：</p>
-<div style="text-align:center"><br><embed src="/img/mma1.svg" style="width:720px"><br></div>
+<div style="text-align:center"><br><embed src="/blog/img/mma1.svg" style="width:720px"><br></div>
 
 <p>然后就可以在Mathematica中写LED闪烁的代码了：</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Do</span>[(</span><br><span class="line">  DeviceWrite[arduinoObject, &lt;|pinNumber -&gt; <span class="number">1</span>|&gt;];</span><br><span class="line">  <span class="keyword">Pause</span>[<span class="number">1</span>];</span><br><span class="line">  DeviceWrite[arduinoObject, &lt;|pinNumber -&gt; <span class="number">0</span>|&gt;];</span><br><span class="line">  <span class="keyword">Pause</span>[<span class="number">1</span>]), <span class="list">&#123;5&#125;</span>]</span><br></pre></td></tr></table></figure>
@@ -407,7 +407,7 @@
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DeviceConfigure[arduinoObject, &lt;|pinNumber -&gt; <span class="string">"digitalInput"</span>|&gt;]</span><br></pre></td></tr></table></figure>
 <p>模拟针脚同样适用。语法相同，只需要把“<code>digitalInput</code>”改成“<code>analogInput</code>”。注意，在使用多个针脚时，上面的语句是可以扩充的，用了一个关联（association，Mathematica 10引入的新特性，类似于其他语言中的“字典”，译者注）。在这种情况下，我们只需要在联合中增加新的键值对就行了。</p>
 <p>我们来试一试在下面的简单电路中读取一个针脚，用到了一个按钮和一个电阻：</p>
-<div style="text-align:center"><br><embed src="/img/mma2.svg" style="width:720px"><br></div>
+<div style="text-align:center"><br><embed src="/blog/img/mma2.svg" style="width:720px"><br></div>
 
 <p>对上面的电路，为了读取数值，用如下语句：</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DeviceRead[arduinoObject, pinNumber]</span><br></pre></td></tr></table></figure>
@@ -416,7 +416,7 @@
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DeviceRead[arduinoObject, <span class="list">&#123;pinNumber1, pinNumber2, ...&#125;</span>]</span><br></pre></td></tr></table></figure>
 <p>返回为一个关联<code>&lt;|pinNumber1-&gt;state1, pinNumber2-&gt;state2, ... |&gt;</code>。</p>
 <p>下面的电路演示模拟输入函数。最理想的是用游戏摇杆做这个，但是下面我们仅仅用两个电位器就可以实现（其实游戏摇杆就是电位器）。</p>
-<div style="text-align:center"><br><embed src="/img/mma3.svg" style="width:720px"><br></div>
+<div style="text-align:center"><br><embed src="/blog/img/mma3.svg" style="width:720px"><br></div>
 
 <p>下面的代码可以在Mathematica中显示一个坐标系，由两个电位计控制。首先要做的事是初始化模拟输入的针脚。我们可以从DeviceRead中通过关联（association）读取两个电位器，然后用Values函数得到数值，再将坐标系单位除以1023，使圆的坐标映射到0和1之间。我们也同样将中间值从0.5移到原点。</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DeviceConfigure[arduinoObject, &lt;|<span class="string">"A0"</span> -&gt; <span class="string">"analogInput"</span>, <span class="string">"A1"</span> -&gt; <span class="string">"analogInput"</span>|&gt;];</span><br><span class="line"><span class="keyword">Dynamic</span>[<span class="keyword">Graphics</span>[<span class="list">&#123;Blue, </span><br><span class="line">    Circle[ (Values[DeviceRead[arduinoObject, &#123; &#123;"A0", "A1"&#125;</span> &#125;]])/<span class="number">1023</span> - <span class="number">.5</span>,  <span class="number">0.1</span>]&#125;, </span><br><span class="line">    <span class="keyword">Axes</span> -&gt; <span class="keyword">True</span>, <span class="keyword">ImageSize</span> -&gt; <span class="list">&#123;800, 800&#125;</span>, </span><br><span class="line">    <span class="keyword">PlotRange</span> -&gt; <span class="list">&#123; &#123;-.75, .75&#125;</span>, <span class="list">&#123;-.75, .75&#125;</span> &#125;],</span><br><span class="line">    <span class="keyword">UpdateInterval</span> -&gt; <span class="number">.5</span>]</span><br></pre></td></tr></table></figure>
