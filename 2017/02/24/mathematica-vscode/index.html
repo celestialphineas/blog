@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: Arduino | 
+            Mathematica VS Code 插件开发笔记 | 
         
         Celestial Phineas
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://celestialphineas.github.io/blog">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Arduino | Celestial Phineas">
+    <meta property="og:title" content="Mathematica VS Code 插件开发笔记 | Celestial Phineas">
     <meta property="og:description" content="Celestial Phineas&#39;s Blog">
 
     <!--[if lte IE 9]>
@@ -200,152 +200,340 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
     
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#括号与自动配对的符号"><span class="post-toc-number">1.</span> <span class="post-toc-text">括号与自动配对的符号</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动配对与嵌套符号"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自动配对与嵌套符号</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注释"><span class="post-toc-number">2.</span> <span class="post-toc-text">注释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串"><span class="post-toc-number">3.</span> <span class="post-toc-text">字符串</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表达式"><span class="post-toc-number">4.</span> <span class="post-toc-text">表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表达式的基本书写形式"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">表达式的基本书写形式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他形式的表达式"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">其他形式的表达式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#信息"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#纯函数"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">纯函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模式"><span class="post-toc-number">5.</span> <span class="post-toc-text">模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#To-do"><span class="post-toc-number"></span> <span class="post-toc-text">To do</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blog/2016/09/05/mathematica-arduino-2/">Mathematica中Arduino的连接与调用</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Mathematica和Arduino连接提供了很多有趣的玩法。在Mathematica的参考资料中提供了一些简单的应用，诸如向LCD显示器写数据，实现在PC端控制显示的目的。后面会提到的，用电位器控制参数图形在坐标系上的显示位置（我的“阳光探测器”类似这个东西）。比较神奇的是Mathematica之父Stephen Wolfram，他的儿子，13岁的Christopher Wolfram在Maker Faire上的一个演示，在Mathematic上写一个参数曲线，然后利用Arduino控制一台无人机按照这条参数曲线去飞行（果然虎父无犬子，我真是连一个13岁小孩也不如）。
-（本文是暑期项目报告的一部分。）
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blog/2016/09/05/mathematica-arduino-2/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="https://avatars3.githubusercontent.com/u/17267055?v=3&amp;s=460" width="44px" height="44px" alt="Celestial Phineas's avatar">
-            </div>
-            <div>
-                <strong>Celestial Phineas</strong>
-                <span>9月 05, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/blog/img/mma1.svg)">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/blog/2016/09/05/mathematica-arduino-1/">用Arduino与Mathematica编写世界</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            作者：Ian Johnson, Wolfram Research
-原文：http://community.wolfram.com/groups/-/m/t/315748
-大家好，今天我来给大家演示一下Mathematica写的Arduino驱动，使用了Mathematica 10中的新函数。下面的演示用到了以下工具：
-
-Mathematica 10
-Arduino IDE
-Arduino板（推荐使用Uno）
-220Ω电阻
-10kΩ电阻
-LED
-瞬时按压按钮
-两个电位计
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/blog/2016/09/05/mathematica-arduino-1/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="https://avatars3.githubusercontent.com/u/17267055?v=3&amp;s=460" width="44px" height="44px" alt="Celestial Phineas's avatar">
-            </div>
-            <div>
-                <strong>Celestial Phineas</strong>
-                <span>9月 05, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/blog/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/blog/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                Mathematica VS Code 插件开发笔记
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="https://avatars3.githubusercontent.com/u/17267055?v=3&s=460" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Celestial Phineas</strong>
+        <span>2月 24, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/blog/tags/Mathmatica/">Mathmatica</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/blog/tags/VS-Code/">VS Code</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Mathematica VS Code 插件开发笔记&url=http://celestialphineas.github.io/blog/blog//blog/2017/02/24/mathematica-vscode/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Mathematica VS Code 插件开发笔记&url=http://celestialphineas.github.io/blog/blog//blog/2017/02/24/mathematica-vscode/index.html&via=Celestial Phineas" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://celestialphineas.github.io/blog/blog//blog/2017/02/24/mathematica-vscode/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://celestialphineas.github.io/blog/blog//blog/2017/02/24/mathematica-vscode/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>随手记的东西，写给自己看。日后心情好的话可能会整理一下。遗憾的是还是很难按照核心语法的方式去做高亮，Mathematica实在是太庞杂了。</p>
+<h2 id="括号与自动配对的符号"><a href="#括号与自动配对的符号" class="headerlink" title="括号与自动配对的符号"></a>括号与自动配对的符号</h2><p>###基础括号</p>
+<p>Mathematica中的基础括号有：</p>
+<table>
+<thead>
+<tr>
+<th>括号用途</th>
+<th>形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运算组合</td>
+<td>$(term)$</td>
+</tr>
+<tr>
+<td>函数</td>
+<td>$f[x]$</td>
+</tr>
+<tr>
+<td>列表 (List)</td>
+<td>${a, b, c}$</td>
+</tr>
+<tr>
+<td>索引 (Part)</td>
+<td>$v[[i]]$</td>
+</tr>
+</tbody>
+</table>
+<p>在实现中，注释括号（$(<em>comments</em>)$）同样被视作一种括号。</p>
+<h3 id="自动配对与嵌套符号"><a href="#自动配对与嵌套符号" class="headerlink" title="自动配对与嵌套符号"></a>自动配对与嵌套符号</h3><p>除上面的几种括号之外，自动配对的还有以下括号与引号，有一些是系统没有内置定义却保留形式的括号。</p>
+<table>
+<thead>
+<tr>
+<th>括号用途</th>
+<th>形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>向下取整 (Floor)</td>
+<td>$\lfloor\dots\rfloor$</td>
+</tr>
+<tr>
+<td>向上取整 (Ceiling)</td>
+<td>$\lceil\dots\rceil$</td>
+</tr>
+<tr>
+<td>角括号 (AngleBracket)</td>
+<td>$\langle\dots\rangle$</td>
+</tr>
+</tbody>
+</table>
+<p>除此之外还有括号条和双括号条，过于罕见没有列出（大多数字体也没有办法显示这些字符）。</p>
+<table>
+<thead>
+<tr>
+<th>引号</th>
+<th>形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>双引号</td>
+<td>“…”</td>
+</tr>
+</tbody>
+</table>
+<p>需要注意的是，Mathematica中只提供了双引号用作字符串边界，没有提供单引号。单引号被用作表示求导。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Mathematica只提供了块注释。块注释从“$(<em>$”开始，至“$</em>)$”结束。Mathematica的注释支持嵌套。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串的实现基于C语言的tmLanguage，Mathematica的字符串规则与C语言基本相同，包括转义字符和断行。</p>
+<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><p>表达式是Mathematica的核心，所有Mathematica对象都是表达式。</p>
+<h3 id="表达式的基本书写形式"><a href="#表达式的基本书写形式" class="headerlink" title="表达式的基本书写形式"></a>表达式的基本书写形式</h3><table>
+<thead>
+<tr>
+<th>形式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$f[x, y]$</td>
+<td>标准形式</td>
+</tr>
+<tr>
+<td>$f@(x, y)$</td>
+<td>前缀形式</td>
+</tr>
+<tr>
+<td>$ x\sim f\sim y$</td>
+<td>中缀形式</td>
+</tr>
+<tr>
+<td>$(x, y)//f$</td>
+<td>后缀形式</td>
+</tr>
+</tbody>
+</table>
+<p>在插件的实现中，通过匹配开始特征实现函数名的高亮，而不做开始与结束匹配，不使用meta。</p>
+<h3 id="其他形式的表达式"><a href="#其他形式的表达式" class="headerlink" title="其他形式的表达式"></a>其他形式的表达式</h3><p>除此之外，函数的复合、映射（Map）、应用（Apply）等也用于匹配函数名。</p>
+<blockquote>
+<p>注意：Mathematica中，标识符的形式是<code>\\b([A-Za-z$][A-Za-z0-9$])</code>，标识符前面如果出现数字，如<code>5Sin</code>，即便没有空格，也视作相乘，即刚刚的例子是<code>5*Sin</code>，虽然不是标识符，但是合法的。在插件实现中，每匹配一个函数名就要匹配前面可能存在的数字。</p>
+</blockquote>
+<h3 id="信息"><a href="#信息" class="headerlink" title="信息"></a>信息</h3><p>信息<code>Symbol::Message</code>的前半部分样式为entity.name.function，后半部分按照语言定义，是字符串。</p>
+<h3 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h3><p>纯函数的可能性放在了一般函数高亮中，将纯函数标志符<code>#</code>视作函数名。</p>
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p>模式按照形式去匹配。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"match": "\\b([A-Za-z$][A-Za-z0-9$]*)?(_\\.|_&#123;1,3&#125;)([A-Za-z$][A-Za-z0-9$]*)?(\\.&#123;2, 3&#125;)?"</span><br></pre></td></tr></table></figure>
+<h1 id="To-do"><a href="#To-do" class="headerlink" title="To do"></a>To do</h1><ul>
+<li>构建内建函数列表、内建属性、内建值（但是这些都是符号……）</li>
+<li>考虑如何将定义中的函数名改为entity</li>
+<li>Linting（？）、snippets……</li>
+<li>Intellisense（？）</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>《Mathematica 全书·第四版》西安交通大学出版社</li>
+<li><a href="https://code.visualstudio.com/docs/extensions/example-hello-world" target="_blank" rel="external">https://code.visualstudio.com/docs/extensions/example-hello-world</a></li>
+<li><a href="http://www.jb51.net/tools/zhengze.html" target="_blank" rel="external">http://www.jb51.net/tools/zhengze.html</a></li>
+<li><a href="http://manual.macromates.com/en/language_grammars" target="_blank" rel="external">http://manual.macromates.com/en/language_grammars</a></li>
+<li><a href="https://code.visualstudio.com/docs/extensionAPI/vscode-api" target="_blank" rel="external">https://code.visualstudio.com/docs/extensionAPI/vscode-api</a></li>
+<li><a href="https://reference.wolfram.com/language/tutorial/Operators.html" target="_blank" rel="external">https://reference.wolfram.com/language/tutorial/Operators.html</a></li>
+</ol>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/blog/2016/10/09/first-snow/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -528,6 +716,14 @@ It will not impact the appearance and can give developers a lot of support :)
                     
 
                     
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
 
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
@@ -672,6 +868,36 @@ It will not impact the appearance and can give developers a lot of support :)
 
                 </main>
             </div>
-        </body>
+        <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
     
 </html>
